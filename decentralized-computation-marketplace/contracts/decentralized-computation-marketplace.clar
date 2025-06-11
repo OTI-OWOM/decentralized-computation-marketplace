@@ -284,3 +284,34 @@
     })
   }
 )
+
+;; Arbiters registry
+(define-map arbiters
+  principal
+  {
+    cases-handled: uint,
+    success-rate: uint,
+    specialty: (string-utf8 50),
+    active: bool,
+    stake: uint
+  }
+)
+
+;; Map to track task escrow funds
+(define-map task-escrow
+  {task-id: uint}
+  {
+    total-funds: uint,
+    release-conditions: (list 5 {
+      milestone: (string-utf8 100),
+      percentage: uint,
+      released: bool,
+      release-approved-by: (optional principal)
+    }),
+    deposit-history: (list 10 {
+      contributor: principal,
+      amount: uint,
+      timestamp: uint
+    })
+  }
+)
