@@ -218,3 +218,31 @@
     blacklisted-by: principal
   }
 )
+
+;; Task categories and subcategories
+(define-map task-categories
+  (string-utf8 50)
+  {
+    subcategories: (list 10 (string-utf8 50)),
+    active: bool,
+    minimum-reputation: uint
+  }
+)
+
+;; Market status
+(define-data-var market-active bool true)
+
+;; User dashboard stats
+(define-map user-stats
+  principal
+  {
+    total-earned: uint,
+    total-spent: uint,
+    tasks-created: uint,
+    tasks-completed: uint,
+    avg-task-complexity: uint,
+    favorite-categories: (list 3 (string-utf8 50)),
+    last-login: uint,
+    membership-tier: uint
+  }
+)
